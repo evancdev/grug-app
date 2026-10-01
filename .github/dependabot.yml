@@ -1,0 +1,30 @@
+version: 2
+updates:
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: weekly
+    cooldown:
+      default-days: 7
+    groups:
+      github-actions:
+        patterns: ["*"]
+    commit-message:
+      prefix: "chore(deps)"
+  - package-ecosystem: npm
+    directory: /
+    schedule:
+      interval: weekly
+    cooldown:
+      default-days: 7
+    # Dependabot puts a package in the first group it matches. A minor release
+    # of the oxc tools can reformat code or add lint rules, so it can fail
+    # format:check or lint and would hold up every update sharing its PR.
+    groups:
+      oxc:
+        patterns: [oxfmt, oxlint, oxlint-tsgolint]
+      npm:
+        patterns: ["*"]
+        update-types: [minor, patch]
+    commit-message:
+      prefix: "chore(deps)"

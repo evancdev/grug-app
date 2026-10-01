@@ -59,8 +59,14 @@ exported function, and test it in a `*.test.ts` beside the module. A comment on
 each assertion says what it fails on.
 
 Before handing back a diff, run `npm run lint`, `npm run format:check`,
-`npm run typecheck` and `npm test`. `npm run format` fixes what `format:check`
-finds.
+`npm run typecheck`, `npm test` and `npm run build`. `npm run format` fixes
+what `format:check` finds. A diff under `.github/` also runs
+`uvx zizmor .github/`.
+
+CI, in `.github/workflows/ci.yml`, runs those five npm scripts and zizmor on
+every pull request, and main accepts a merge only once its `all-green` check
+passes. A new check goes in as an npm script and an entry in CI's list of
+scripts, never as a tool called from the workflow directly.
 
 ## Comments
 
