@@ -10,6 +10,8 @@
     "allowImportingTsExtensions": true,
     "skipLibCheck": true,
     "isolatedModules": true,
+    "verbatimModuleSyntax": true,
+    "erasableSyntaxOnly": true,
     "types": ["vite/client", "node"],
     "paths": { "@/*": ["./renderer/src/*"] }
   },

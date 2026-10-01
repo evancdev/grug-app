@@ -1,0 +1,6 @@
+{
+  "$schema": "./node_modules/oxfmt/configuration_schema.json",
+  // oxfmt drops the indent from a code span that wraps inside a list item, which
+  // mangles hand-wrapped Markdown like CLAUDE.md.
+  "ignorePatterns": ["*.md"]
+}

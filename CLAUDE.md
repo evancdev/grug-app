@@ -1,7 +1,7 @@
-# Grug
+# grug
 
 A macOS desktop app with one window. The sidebar lists sections, and the rest
-of the window shows the open one. Agents maintain Grug and pick it up cold each
+of the window shows the open one. Agents maintain grug and pick it up cold each
 session, so the conventions live here. A change that adds a convention or
 breaks one updates this file in the same pull request.
 
@@ -21,6 +21,12 @@ it, not before.
   around it.
 - The page sends the arguments, so a call checks their shape before using them.
 
+## Imports
+
+Code under `renderer/src/` imports another module there by `@/`, as in
+`@/app`, not `../app`. The alias is `paths` in `tsconfig.json`, which Vite and
+Vitest both read, so it is defined nowhere else.
+
 ## Reuse
 
 Before writing a component, hook, or helper, search for one that does the job.
@@ -33,7 +39,7 @@ This repo is public, so nothing in it describes the machine it runs on or the
 person who uses it. That means no usernames or home folder paths, and no real
 repo, plan, container, database, table or host names, ports, or passwords, in
 code, tests, comments, docs, or commit messages. Tests and examples use made-up
-values. Places every install has are fine, like `~/Applications/Grug.app` or
+values. Places every install has are fine, like `~/Applications/grug.app` or
 `~/.claude/projects/`.
 
 Before handing back a diff, search its added lines for the real names you saw
@@ -51,6 +57,10 @@ too.
 Keep logic that doesn't touch the disk, a process, or the network in its own
 exported function, and test it in a `*.test.ts` beside the module. A comment on
 each assertion says what it fails on.
+
+Before handing back a diff, run `npm run lint`, `npm run format:check`,
+`npm run typecheck` and `npm test`. `npm run format` fixes what `format:check`
+finds.
 
 ## Comments
 
