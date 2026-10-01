@@ -55,8 +55,9 @@ too.
 ## Tests
 
 Keep logic that doesn't touch the disk, a process, or the network in its own
-exported function, and test it in a `*.test.ts` beside the module. A comment on
-each assertion says what it fails on.
+exported function, and test it in a `*.test.ts` beside the module. Name each
+test for the behavior it checks, so a failure reads as what broke. An assertion
+gets a comment only under the rules in Comments below.
 
 Before handing back a diff, run `npm run lint`, `npm run format:check`,
 `npm run typecheck`, `npm test` and `npm run build`. `npm run format` fixes
