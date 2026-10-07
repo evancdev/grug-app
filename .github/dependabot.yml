@@ -17,6 +17,11 @@ updates:
       interval: weekly
     cooldown:
       default-days: 7
+    # @types/node matches the Node that Electron ships, so its major changes by
+    # hand when Electron's Node does.
+    ignore:
+      - dependency-name: "@types/node"
+        update-types: ["version-update:semver-major"]
     # Dependabot puts a package in the first group it matches. A minor release
     # of the oxc tools can reformat code or add lint rules, so it can fail
     # format:check or lint and would hold up every update sharing its PR.
