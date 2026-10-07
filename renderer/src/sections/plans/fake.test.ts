@@ -124,13 +124,11 @@ test("a plan or file that doesn't exist answers null", async () => {
 });
 
 test("each answer is a copy", async () => {
-  // IPC never answers two calls with the same object.
   expect(await fakePlanCalls.listPlans()).not.toBe(await fakePlanCalls.listPlans());
 });
 
 test("isFailed tells an error object from an answer", () => {
   expect(isFailed({ error: "no such plan" })).toBe(true);
-  // null is the answer for a plan that isn't there.
   expect(isFailed(null)).toBe(false);
   expect(isFailed([])).toBe(false);
 });
@@ -143,7 +141,6 @@ const [repo] = fakeRepos;
 const [plan] = repo.plans;
 const [file] = plan.files;
 
-// Keyed by call, so a call added to PlanCalls without a case fails the typecheck.
 const cases: Record<
   keyof PlanCalls,
   { call: (calls: PlanCalls) => Promise<unknown>; empty: unknown; answer: unknown }

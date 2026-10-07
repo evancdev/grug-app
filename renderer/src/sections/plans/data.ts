@@ -1,7 +1,8 @@
 export const PLAN_STATUSES = ["planning", "active", "reviewing", "archived", "abandoned"] as const;
 export type PlanStatus = (typeof PLAN_STATUSES)[number];
 
-// blocked waits on an unfinished milestone, waiting on something outside the plan.
+// `blocked` waits on another milestone in the plan, `waiting` on something
+// outside it, like a PR merging.
 export const MILESTONE_STATES = ["done", "open", "ready", "blocked", "waiting"] as const;
 export type MilestoneState = (typeof MILESTONE_STATES)[number];
 
@@ -23,15 +24,12 @@ export type PullRequest = {
   title: string;
   url: string;
   state: PrState;
-  // The branch it was opened from.
   branch: string;
 };
 
 export type Plan = {
-  // The plan's folder name.
   name: string;
   status: PlanStatus;
-  // null until the plan has a branch.
   branch: string | null;
   // In the order they were opened.
   prs: PullRequest[];
@@ -54,12 +52,10 @@ export type Failed = { error: string };
 
 export type Result<T> = T | Failed;
 
-// `"error" in null` throws, and getPlan and getPlanFile can answer null.
 export function isFailed<T>(result: Result<T>): result is Failed {
   return typeof result === "object" && result !== null && "error" in result;
 }
 
-// null from getPlan or getPlanFile means no such repo, plan or file.
 export type PlanCalls = {
   listPlans: () => Promise<Result<Repo[]>>;
   getPlan: (repoId: string, planName: string) => Promise<Result<Plan | null>>;

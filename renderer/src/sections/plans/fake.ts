@@ -336,7 +336,6 @@ export const fakePlanCalls: PlanCalls = {
 
 const hang = () => new Promise<never>(() => {});
 
-// The query, not the hash, since Figma's capture uses the hash.
 export function applyUrlSetting(calls: PlanCalls, search: string): PlanCalls {
   const setting = new URLSearchParams(search).get("calls");
   if (setting === "hang") return { listPlans: hang, getPlan: hang, getPlanFile: hang };
