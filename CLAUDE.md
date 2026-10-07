@@ -11,6 +11,10 @@ Each sidebar section gets its own folder, holding its page, the parts only it
 uses, and its hooks. Code moves to a shared folder once a second section needs
 it, not before.
 
+A section is one entry in the list in `renderer/src/sections/index.ts`. The
+sidebar draws that list, and the URL's `?section=` names the open entry by its
+`id`, so a reload and the back button keep it.
+
 ## Calls from the page to the main process
 
 - The page reaches the main process only through one named list of calls. The
