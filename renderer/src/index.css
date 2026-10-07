@@ -1,13 +1,20 @@
 @import "tailwindcss";
 @import "tw-animate-css";
 @import "shadcn/tailwind.css";
-@import "@fontsource-variable/geist";
+@import "@fontsource/dm-mono/400.css";
+@import "@fontsource/dm-mono/500.css";
+@import "@fontsource/bebas-neue/400.css";
 
 @custom-variant dark (&:is(.dark *));
 
 @theme inline {
-  --font-heading: var(--font-sans);
-  --font-sans: "Geist Variable", sans-serif;
+  --shadow-hard-edge: -2px 2px 0 0 var(--primary-edge);
+  --shadow-hard-ink: -2px 2px 0 0 var(--ink);
+  --font-heading: "Bebas Neue", sans-serif;
+  --font-sans: "DM Mono", ui-monospace, monospace;
+  --font-mono: "DM Mono", ui-monospace, monospace;
+  --color-ink: var(--ink);
+  --color-primary-edge: var(--primary-edge);
   --color-sidebar-ring: var(--sidebar-ring);
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
@@ -49,82 +56,86 @@
 }
 
 :root {
-  --background: oklch(1 0 0);
-  --foreground: oklch(0.145 0 0);
-  --card: oklch(1 0 0);
-  --card-foreground: oklch(0.145 0 0);
-  --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.145 0 0);
-  --primary: oklch(0.205 0 0);
-  --primary-foreground: oklch(0.985 0 0);
-  --secondary: oklch(0.97 0 0);
-  --secondary-foreground: oklch(0.205 0 0);
-  --muted: oklch(0.97 0 0);
-  --muted-foreground: oklch(0.556 0 0);
-  --accent: oklch(0.97 0 0);
-  --accent-foreground: oklch(0.205 0 0);
-  --destructive: oklch(0.577 0.245 27.325);
-  --border: oklch(0.922 0 0);
-  --input: oklch(0.922 0 0);
-  --ring: oklch(0.708 0 0);
-  --chart-1: oklch(0.87 0 0);
-  --chart-2: oklch(0.556 0 0);
-  --chart-3: oklch(0.439 0 0);
-  --chart-4: oklch(0.371 0 0);
-  --chart-5: oklch(0.269 0 0);
-  --radius: 0.625rem;
-  --sidebar: oklch(0.985 0 0);
-  --sidebar-foreground: oklch(0.145 0 0);
-  --sidebar-primary: oklch(0.205 0 0);
-  --sidebar-primary-foreground: oklch(0.985 0 0);
-  --sidebar-accent: oklch(0.97 0 0);
-  --sidebar-accent-foreground: oklch(0.205 0 0);
-  --sidebar-border: oklch(0.922 0 0);
-  --sidebar-ring: oklch(0.708 0 0);
+  /* The window's backgroundColor in electron/main.ts copies this. */
+  --background: #ffffff;
+  --foreground: #1e1e1e;
+  /* The comic frame's panel borders. */
+  --ink: #000000;
+  --card: #ffffff;
+  --card-foreground: #1e1e1e;
+  --popover: #ffffff;
+  --popover-foreground: #1e1e1e;
+  --primary: #63c8c1;
+  --primary-foreground: #000000;
+  /* The primary button's border and hard shadow. */
+  --primary-edge: #267b7a;
+  --secondary: #ffffff;
+  --secondary-foreground: #1e1e1e;
+  --muted: #f2f2f2;
+  --muted-foreground: color-mix(in oklch, #1e1e1e 62%, #ffffff);
+  --accent: #d5f2ef;
+  --accent-foreground: #1e1e1e;
+  --destructive: #c7332f;
+  --border: rgb(0 0 0 / 11%);
+  --input: rgb(0 0 0 / 15%);
+  --ring: #339997;
+  --chart-1: #d5f2ef;
+  --chart-2: #abe4de;
+  --chart-3: #63c8c1;
+  --chart-4: #339997;
+  --chart-5: #267b7a;
+  --radius: 0.5rem;
+  --sidebar: #f9f9f9;
+  --sidebar-foreground: #1e1e1e;
+  --sidebar-primary: var(--primary);
+  --sidebar-primary-foreground: var(--primary-foreground);
+  --sidebar-accent: #ececec;
+  --sidebar-accent-foreground: #1e1e1e;
+  --sidebar-border: var(--ink);
+  --sidebar-ring: #339997;
 }
 
 .dark {
-  --background: oklch(0.145 0 0);
-  --foreground: oklch(0.985 0 0);
-  --card: oklch(0.205 0 0);
-  --card-foreground: oklch(0.985 0 0);
-  --popover: oklch(0.205 0 0);
-  --popover-foreground: oklch(0.985 0 0);
-  --primary: oklch(0.922 0 0);
-  --primary-foreground: oklch(0.205 0 0);
-  --secondary: oklch(0.269 0 0);
-  --secondary-foreground: oklch(0.985 0 0);
-  --muted: oklch(0.269 0 0);
-  --muted-foreground: oklch(0.708 0 0);
-  --accent: oklch(0.269 0 0);
-  --accent-foreground: oklch(0.985 0 0);
+  color-scheme: dark;
+  /* The window's backgroundColor in electron/main.ts and the flash rule below
+     copy this. */
+  --background: #0a0a0a;
+  --foreground: #f5f5f5;
+  --ink: #f5f5f5;
+  --card: #131314;
+  --card-foreground: #f5f5f5;
+  --popover: #202021;
+  --popover-foreground: #f5f5f5;
+  --secondary: #181819;
+  --secondary-foreground: #f5f5f5;
+  --muted: #1e1e1f;
+  --muted-foreground: color-mix(in oklch, #f5f5f5 68%, #0a0a0a);
+  --accent: #1e1e1f;
+  --accent-foreground: #f5f5f5;
   --destructive: oklch(0.704 0.191 22.216);
-  --border: oklch(1 0 0 / 10%);
-  --input: oklch(1 0 0 / 15%);
-  --ring: oklch(0.556 0 0);
-  --chart-1: oklch(0.87 0 0);
-  --chart-2: oklch(0.556 0 0);
-  --chart-3: oklch(0.439 0 0);
-  --chart-4: oklch(0.371 0 0);
-  --chart-5: oklch(0.269 0 0);
-  --sidebar: oklch(0.205 0 0);
-  --sidebar-foreground: oklch(0.985 0 0);
-  --sidebar-primary: oklch(0.488 0.243 264.376);
-  --sidebar-primary-foreground: oklch(0.985 0 0);
-  --sidebar-accent: oklch(0.269 0 0);
-  --sidebar-accent-foreground: oklch(0.985 0 0);
-  --sidebar-border: oklch(1 0 0 / 10%);
-  --sidebar-ring: oklch(0.556 0 0);
+  --border: rgb(255 255 255 / 12%);
+  --input: rgb(255 255 255 / 16%);
+  --ring: #4db4b0;
+  --sidebar: #131314;
+  --sidebar-foreground: #f5f5f5;
+  --sidebar-accent: #1e1e1f;
+  --sidebar-accent-foreground: #f5f5f5;
+  --sidebar-ring: #4db4b0;
 }
 
 @layer base {
   * {
     @apply border-border outline-ring/50;
   }
-  body {
-    @apply bg-background text-foreground;
-  }
   html {
-    @apply font-sans;
+    @apply bg-background font-sans text-foreground;
+  }
+  /* The built page can paint before main.tsx adds .dark, which flashes the
+     light background on a dark launch. An empty #root means main.tsx hasn't
+     run, so the light theme picked later still applies. */
+  @media (prefers-color-scheme: dark) {
+    html:not(.dark):has(#root:empty) {
+      background-color: #0a0a0a;
+    }
   }
 }
