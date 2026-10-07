@@ -1,0 +1,17 @@
+{
+  "compilerOptions": {
+    "target": "ES2024",
+    "lib": ["ES2024"],
+    "module": "nodenext",
+    "strict": true,
+    "skipLibCheck": true,
+    "types": ["node"],
+    "rootDir": ".",
+    "outDir": "../dist/electron",
+    "rewriteRelativeImportExtensions": true,
+    "isolatedModules": true,
+    // No verbatimModuleSyntax: it rejects `import` in a CommonJS .cts file,
+    // which a sandboxed preload has to be.
+    "erasableSyntaxOnly": true
+  }
+}
